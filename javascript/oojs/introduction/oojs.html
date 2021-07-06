@@ -11,6 +11,23 @@
   </body>
 
     <script>
-
+      var persona = {
+        nombre: {
+          pila:'Bob',
+          apellido: 'Smith'
+        },
+        edad: 32,
+        genero: 'masculino',
+        intereses: ['música', 'esquí'],
+        bio: function () {
+          alert(this.nombre.pila + ' ' + this.nombre.apellido + ' tiene ' + this.edad + ' años. Le gusta ' + this.intereses[0] + ' y ' + this.intereses[1] + '.');
+        },
+        saludo: function() {
+          alert('Hola, Soy '+ this.nombre.pila + '. ');
+        }
+      };
+      var nombrePerzonalizado = 'altura';
+      var valorPerzonalizado = '1.75m';
+      persona[nombrePerzonalizado] = valorPerzonalizado;
     </script>
 </html>
