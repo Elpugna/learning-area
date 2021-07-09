@@ -11,6 +11,7 @@
   </body>
 
     <script>
+      /*  PRIMERA CLASE DE OOJS PESTAÑA INTRODUCTORIA
       var persona = {
         nombre: {
           pila:'Bob',
@@ -29,5 +30,126 @@
       var nombrePerzonalizado = 'altura';
       var valorPerzonalizado = '1.75m';
       persona[nombrePerzonalizado] = valorPerzonalizado;
+      **/ //FIN DE PESTAÑA INTRODUCTORIA
+
+      //PESTAÑA OOJS PARA BEGGINERS
+ /**     function createNewPerson(name) {
+      const obj = {};
+      obj.name = name;
+      obj.greeting = function() {
+        alert('Hi! I\'m ' + obj.name + '.');
+      };
+      return obj;
+    }**/
+/** LO QUE HABÍA HECHO YO
+    function Person(first, last, age, gender, interests){
+      this.name ={
+        first: first,
+        last: last
+      };
+      this.age = age;
+      this.gender = gender;
+      this.interests = interests;
+      this.bio = function() {
+        //Soluciono que el mensaje no diga "he" por defecto y que se adapte a la persona. (Quizás un this.pronoun = "He/She" fuera mejor para futuros mensajes,pero lo resolví así.)
+        let genero = this.gender;
+        let variable = function obtenerGenero(){
+          if(genero[0].toUpperCase() === 'F'){
+            return "She";
+          }else{
+            return "He";
+          }
+        }
+        //Soluciono el tema de los intereses que tiene:
+        let fraseIntereses = function frasesita(){
+          let a= "";
+          for(let i=0;i<interests.length;i++){
+            if(i==interests.length -1){
+                a += interests[i] + ".";
+            }else{
+                a += interests[i] + " and ";
+            }
+          }
+          return a;
+        }
+        alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. '+ variable + ' likes ' + fraseIntereses);
+      };
+      this.greeting = function(){
+        alert("Hola, mi nombre es: "+ this.name +".");
+      };
+    }
+
+    let person1 = new Person('Pedro', 'Perez', 32, 'Masculino', ['Rap', 'Matear']);
+**/
+
+    /**
+     *
+     * no me hago cargo de todo lo que te aqueja,
+     * tampoco busco cual bobo la moraleja,
+     * antes que rapper, loro?, persona
+     * y antes que todos mi vieja**/
+
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+          'first': first,
+          'last' : last
+        };
+
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+        this.bio = function() {
+          // First define a string, and make it equal to the part of
+          // the bio that we know will always be the same.
+
+          var string = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+
+          // define a variable that will contain the pronoun part of
+          // the second sentence
+
+          var pronoun;
+
+          // check what the value of gender is, and set pronoun
+          // to an appropriate value in each cas
+          if((this.gender[0]).toUpperCase() === 'F'){
+            pronoun = "She likes ";
+          }else if((this.gender[0]).toUpperCase() === 'M'){  
+            pronoun = "He likes ";
+          }else{
+            pronoun = "They like ";
+          }
+          // add the pronoun string on to the end of the main string
+          string += pronoun;
+          // use another conditional to structure the last part of the
+          // second sentence depending on whether the number of interests
+          // is 1, 2, or 3
+          if(this.interests.length === 1) {
+            string += this.interests[0] + '.';
+          } else {
+            // if there are more than 2 interests, we loop through them
+            // all, adding each one to the main string followed by a comma,
+            // except for the last one, which needs an and & a full stop
+            for(var i = 0; i < this.interests.length; i++) {
+              if(i === this.interests.length - 1) {
+                string += 'and ' + this.interests[i] + '.';
+              } else {
+                string += this.interests[i] + ', ';
+              }
+            }
+          }
+          // finally, with the string built, we alert() it
+          alert(string);
+        };
+        this.greeting = function() {
+          alert('Hi! I\'m ' + this.name.first + '.');
+        };
+      };
+
+      let person1 = new Person('Tammi', 'Smith', 32, 'neutral', ['music', 'skiing', 'kickboxing']);
+      Person.prototype.farewell = function() {
+        alert(this.name.first + ' has left the building. Bye for now!');
+      };
+      Person.prototype.algo = function() { alert('Banca Machin');};
+
     </script>
 </html>
