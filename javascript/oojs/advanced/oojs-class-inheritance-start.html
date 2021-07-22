@@ -87,6 +87,7 @@
         value: Teacher,
         enumerable: false, // so that it does not appear in 'for in' loop
         writable: true });
+	 //También podría haber hecho Teacher.prototype.constructor = Teacher pero eso no le da la funcionalidad de enumerable y eso, ni idea keloke
 
       //Cambio el greeting de los maestros
       Teacher.prototype.greeting = function(){
